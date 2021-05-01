@@ -1,6 +1,5 @@
 import pyaudio
 
-import alsaaudio
 
 RATE = 44100
 CHANNELS = 1
@@ -20,24 +19,3 @@ class Audio(object):
 
 		#self.stream.close()
 		#self.p.terminate()
-		
-
-# alsaaudio version
-def alsaplay(signal, channels, rate):
-
-	#device = alsaaudio.PCM(mode=alsaaudio.PCM_PLAYBACK)
-	#device = alsaaudio.PCM(type=alsaaudio.PCM_PLAYBACK, mode=alsaaudio.PCM_NORMAL)
-	device = alsaaudio.PCM(mode=alsaaudio.PCM_NORMAL)
-	try:
-		device.setchannels(channels)
-		device.setrate(rate)
-		device.setformat(alsaaudio.PCM_FORMAT_S16_LE)
-
-	except ValueError:
-		pass
-	else:
-		device.setchannels(CHANNELS)
-		device.setrate(RATE)
-		device.setformat(alsaaudio.PCM_FORMAT_S16_LE)
-		
-	device.write(signal)
