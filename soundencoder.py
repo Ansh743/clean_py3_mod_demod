@@ -18,9 +18,9 @@ def encodeSound(data):
 
 	for bit in data:
 		if bit == 0:
-			m = np.hstack((m, np.multiply(np.ones(MAX_FREQUENCY/SAMPLE_RATE), CARRIER_FREQUENCY+DEV_FREQUENCY)))
+			m = np.hstack((m, np.multiply(np.ones(int(MAX_FREQUENCY/SAMPLE_RATE)), CARRIER_FREQUENCY+DEV_FREQUENCY)))
 		else:
-			m = np.hstack((m, np.multiply(np.ones(MAX_FREQUENCY/SAMPLE_RATE), CARRIER_FREQUENCY-DEV_FREQUENCY)))
+			m = np.hstack((m, np.multiply(np.ones(int(MAX_FREQUENCY/SAMPLE_RATE)), CARRIER_FREQUENCY-DEV_FREQUENCY)))
 
 	sig = AMPL * np.cos(2 * np.pi * np.multiply(m, t)) 
 	#noise = (np.random.randn(len(sig)) + 1) * N_AMPL
